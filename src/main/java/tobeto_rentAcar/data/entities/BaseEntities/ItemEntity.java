@@ -1,9 +1,6 @@
 package tobeto_rentAcar.data.entities.BaseEntities;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import lombok.experimental.SuperBuilder;
 import tobeto_rentAcar.data.entities.BaseEntities.types.ItemType;
 
@@ -13,6 +10,7 @@ import javax.persistence.*;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@RequiredArgsConstructor
 @Entity
 @SuperBuilder
 @Inheritance(strategy = InheritanceType.JOINED)
@@ -24,5 +22,5 @@ public class ItemEntity extends BaseEntity{
     private int id;
 
     @Column(name = "item_type")
-    private ItemType itemType;
+    protected ItemType itemType;
 }

@@ -27,6 +27,11 @@ public class CarEntity extends ItemEntity {
     @JoinColumn(name = "model_entity")
     private ModelEntity modelEntity;
 
+
+
+    @Column(name = "details")
+    private String details;
+
     @Column(name="daily_price")
     private double dailyPrice;
 

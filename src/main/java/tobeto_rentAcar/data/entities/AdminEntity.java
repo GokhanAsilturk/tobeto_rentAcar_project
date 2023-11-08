@@ -16,7 +16,6 @@ import javax.persistence.*;
 @SuperBuilder
 public class AdminEntity extends UserEntity {
 
-    private UserType userType = UserType.ADMIN;
 
     @Column(name = "salary")
     private double salary;

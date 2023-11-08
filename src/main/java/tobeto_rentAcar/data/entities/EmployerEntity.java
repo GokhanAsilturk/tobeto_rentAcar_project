@@ -20,6 +20,8 @@ import javax.persistence.Table;
 @SuperBuilder
 public class EmployerEntity extends UserEntity {
 
+
+
     public EmployerDTO convertToDto(){
         return EmployerDTO.builder()
                 .id(getId())

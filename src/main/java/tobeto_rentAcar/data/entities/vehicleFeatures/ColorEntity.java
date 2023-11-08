@@ -16,10 +16,11 @@ import javax.persistence.Table;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "models")
+@Table(name = "colors")
 @SuperBuilder
-public class ModelEntity extends ItemEntity {
+public class ColorEntity extends ItemEntity {
 
     @Column(name = "name")
     private String name;
+
 }
