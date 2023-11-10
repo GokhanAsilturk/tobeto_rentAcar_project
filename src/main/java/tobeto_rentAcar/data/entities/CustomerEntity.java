@@ -9,7 +9,6 @@ import org.apache.commons.lang3.StringUtils;
 import tobeto_rentAcar.data.DTO.CustomerDTO;
 import tobeto_rentAcar.data.entities.BaseEntities.UserEntity;
 import tobeto_rentAcar.data.entities.employerFeatures.DrivingLicenseEntity;
-import org.apache.commons.lang3.text.WordUtils;
 
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;

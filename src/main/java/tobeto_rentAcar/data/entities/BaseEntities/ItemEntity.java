@@ -10,7 +10,6 @@ import javax.persistence.*;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@RequiredArgsConstructor
 @Entity
 @SuperBuilder
 @Inheritance(strategy = InheritanceType.JOINED)
@@ -22,4 +21,5 @@ public class ItemEntity extends BaseEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private int id;
+
 }

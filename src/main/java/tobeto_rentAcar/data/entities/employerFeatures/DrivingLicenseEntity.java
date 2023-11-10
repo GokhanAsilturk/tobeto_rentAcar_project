@@ -32,8 +32,8 @@ public class DrivingLicenseEntity extends ItemEntity {
 
     private DrivingLicenseType licenseType;
 
-    public DrivingLicenseDTO convertToDTO(){
-       return DrivingLicenseDTO.builder()
+    public DrivingLicenseDTO convertToDTO() {
+        return DrivingLicenseDTO.builder()
                 .licenseNumber(licenseNumber.toUpperCase())
                 .licenseType(licenseType)
                 .build();

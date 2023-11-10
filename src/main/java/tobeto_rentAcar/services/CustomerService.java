@@ -6,6 +6,7 @@ import tobeto_rentAcar.data.DTO.CustomerDTO;
 import tobeto_rentAcar.data.entities.CustomerEntity;
 import tobeto_rentAcar.data.requests.commonRequests.userCommonRequests.DeleteUserReq;
 import tobeto_rentAcar.data.requests.customerRequests.AddCustomerReq;
+import tobeto_rentAcar.data.requests.customerRequests.GetCustomerByEmailReq;
 import tobeto_rentAcar.data.requests.customerRequests.GetCustomerByIdReq;
 import tobeto_rentAcar.data.requests.customerRequests.UpdateCustomerReq;
 import tobeto_rentAcar.services.abstracts.ICustomerService;
@@ -32,13 +33,18 @@ public class CustomerService implements ICustomerService {
     }
 
     @Override
+    public CustomerDTO getByEmailAddress(GetCustomerByEmailReq getCustomerByEmailReq) {
+        return this.customerEntityService.getByEmailAddress(getCustomerByEmailReq.email()).convertToDto();
+    }
+
+    @Override
     public List<CustomerDTO> getAll() {
         return this.customerEntityService.getAll().stream()
                 .map(CustomerEntity::convertToDto).toList();
     }
 
     @Override
-    public CustomerDTO update(UpdateCustomerReq updateCustomerReq) throws IllegalAccessException {
+    public CustomerDTO update(UpdateCustomerReq updateCustomerReq) throws Exception {
         CustomerEntity customerEntity = this.customerEntityService.getById(updateCustomerReq.customerDTO().id());
         Field[] customerEntityFields = CustomerEntity.class.getFields(); // fieldların listesini alıyoruz.
         Field[] customerReqFields = UpdateCustomerReq.class.getFields();
@@ -59,20 +65,24 @@ public class CustomerService implements ICustomerService {
     }
 
     @Override
-    public void delete(DeleteUserReq deleteUserReq) {
-//        //TODO burası hata verebilir. postman üzerinden test edilmeli.
+    public void delete(DeleteUserReq deleteUserReq) throws Exception {
+//TODO burası hata verebilir. postman üzerinden test edilmeli.
+
+        this.customerEntityService.softDelete(customerEntityService.getById(deleteUserReq.id()));
+
 //        try {
 //            customerEntityService.delete(customerEntityService.getById(deleteUserReq.id()));
 //        } catch (Exception e) {
 //            customerEntityService.delete(customerEntityService.getByEmailAddress(deleteUserReq.emailAddress()));
 //        }
+//
+//        if (customerEntityService.softDelete(customerEntityService.getById(deleteUserReq.id()))
+//                || customerEntityService.softDelete(customerEntityService.getByEmailAddress(deleteUserReq.emailAddress()))) {
+//
+//        } else {
+//            throw new NullPointerException("bulunamadı");
+//        }
 
-        if (customerEntityService.delete(customerEntityService.getById(deleteUserReq.id()))
-                || customerEntityService.delete(customerEntityService.getByEmailAddress(deleteUserReq.emailAddress()))) {
-
-        }else{
-        throw new NullPointerException("bulunamadı");
-        }
 
     }
 

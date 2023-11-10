@@ -14,8 +14,8 @@ public interface ICustomerEntityService {
 
     List<CustomerEntity> getAll();
 
-    CustomerEntity update(CustomerEntity customerEntity);
+    CustomerEntity update(CustomerEntity customerEntity) throws Exception;
 
-    boolean delete(CustomerEntity customerEntity);
+    void softDelete(CustomerEntity customerEntity) throws Exception;
 
 }
