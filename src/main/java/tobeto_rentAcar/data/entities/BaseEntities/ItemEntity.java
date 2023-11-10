@@ -14,13 +14,12 @@ import javax.persistence.*;
 @Entity
 @SuperBuilder
 @Inheritance(strategy = InheritanceType.JOINED)
-public class ItemEntity extends BaseEntity{
+public class ItemEntity extends BaseEntity {
 
+    @Column(name = "item_type")
+    protected ItemType itemType;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private int id;
-
-    @Column(name = "item_type")
-    protected ItemType itemType;
 }

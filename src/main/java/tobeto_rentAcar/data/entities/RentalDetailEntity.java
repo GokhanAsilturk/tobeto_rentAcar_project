@@ -24,11 +24,11 @@ public class RentalDetailEntity extends ItemEntity {
 
 
     @ManyToOne
-    @JoinColumn(name = "employer_entity")
-    private EmployerEntity employerEntity;
+    @JoinColumn(name = "customer_entity_id")
+    private CustomerEntity customerEntity;
 
     @ManyToOne
-    @JoinColumn(name = "car_entity")
+    @JoinColumn(name = "car_entity_id")
     private CarEntity carEntity;
 
     @Column(name = "start_date")

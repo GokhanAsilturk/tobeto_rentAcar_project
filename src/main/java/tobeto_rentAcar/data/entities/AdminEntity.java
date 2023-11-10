@@ -1,11 +1,15 @@
 package tobeto_rentAcar.data.entities;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import lombok.experimental.SuperBuilder;
 import tobeto_rentAcar.data.entities.BaseEntities.UserEntity;
-import tobeto_rentAcar.data.entities.BaseEntities.types.UserType;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 
 @Getter
 @Setter

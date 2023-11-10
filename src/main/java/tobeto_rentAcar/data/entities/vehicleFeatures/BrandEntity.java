@@ -1,6 +1,9 @@
 package tobeto_rentAcar.data.entities.vehicleFeatures;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import lombok.experimental.SuperBuilder;
 import tobeto_rentAcar.data.entities.BaseEntities.ItemEntity;
 
