@@ -7,9 +7,7 @@ import lombok.Setter;
 import lombok.experimental.SuperBuilder;
 import tobeto_rentAcar.data.entities.BaseEntities.ItemEntity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Getter
 @Setter
@@ -22,4 +20,8 @@ public class ModelEntity extends ItemEntity {
 
     @Column(name = "name")
     private String name;
+
+    @OneToOne
+    @JoinColumn(name = "brand")
+    private BrandEntity brandEntity;
 }

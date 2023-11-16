@@ -16,7 +16,7 @@ import javax.persistence.Table;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "brands")
+@Table(name = "body_types")
 @SuperBuilder
 public class BodyTypeEntity extends ItemEntity {
 

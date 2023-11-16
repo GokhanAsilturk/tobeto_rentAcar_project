@@ -1,4 +1,4 @@
-package tobeto_rentAcar.data.entities.employerFeatures;
+package tobeto_rentAcar.data.entities.customerFeatures;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -25,8 +25,8 @@ import javax.persistence.Table;
 public class DrivingLicenseEntity extends ItemEntity {
 
     @ManyToOne
-    @JoinColumn(name = "employer_entity_id")
-    private CustomerEntity employerEntity;
+    @JoinColumn(name = "customer_entity_id")
+    private CustomerEntity customerEntity;
 
     private String licenseNumber;
 

@@ -22,4 +22,5 @@ public class BrandEntity extends ItemEntity {
 
     @Column(name = "name")
     private String name;
+
 }

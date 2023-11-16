@@ -1,6 +1,6 @@
 package tobeto_rentAcar.services;
 
-import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import tobeto_rentAcar.data.DTO.CustomerDTO;
 import tobeto_rentAcar.data.entities.CustomerEntity;
@@ -16,10 +16,14 @@ import java.lang.reflect.Field;
 import java.util.List;
 
 @Service
-@RequiredArgsConstructor
 public class CustomerService implements ICustomerService {
 
     private final CustomerEntityService customerEntityService;
+
+    @Autowired
+    public CustomerService(CustomerEntityService customerEntityService) {
+        this.customerEntityService = customerEntityService;
+    }
 
     //TODO add işleminin bütün implementasyonları bitti. customer üzerinden ilerliyorum
     @Override
@@ -59,7 +63,6 @@ public class CustomerService implements ICustomerService {
                 }
             }
         }
-
 
         return this.customerEntityService.update(customerEntity).convertToDto();
     }

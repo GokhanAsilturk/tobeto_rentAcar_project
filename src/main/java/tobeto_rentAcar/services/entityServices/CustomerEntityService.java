@@ -1,6 +1,6 @@
 package tobeto_rentAcar.services.entityServices;
 
-import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import tobeto_rentAcar.data.entities.CustomerEntity;
 import tobeto_rentAcar.dataAccess.CustomerRepository;
@@ -11,10 +11,14 @@ import tobeto_rentAcar.services.entityServices.abstracts.ICustomerEntityService;
 import java.util.List;
 
 @Service
-@RequiredArgsConstructor
 public class CustomerEntityService implements ICustomerEntityService {
 
     private final CustomerRepository customerRepository;
+
+    @Autowired
+    public CustomerEntityService(CustomerRepository customerRepository) {
+        this.customerRepository = customerRepository;
+    }
 
     @Override
     public CustomerEntity save(CustomerEntity customerEntity) {
@@ -54,7 +58,7 @@ public class CustomerEntityService implements ICustomerEntityService {
     public void softDelete(CustomerEntity customerEntity) throws Exception {
 
         try {
-            customerEntity.setIsDeleted(true);
+            customerEntity.setDeleted(true);
             this.customerRepository.save(customerEntity);
         } catch (Exception e) {
             throw new Exception();

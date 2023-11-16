@@ -8,7 +8,7 @@ import lombok.experimental.SuperBuilder;
 import org.apache.commons.lang3.StringUtils;
 import tobeto_rentAcar.data.DTO.CustomerDTO;
 import tobeto_rentAcar.data.entities.BaseEntities.UserEntity;
-import tobeto_rentAcar.data.entities.employerFeatures.DrivingLicenseEntity;
+import tobeto_rentAcar.data.entities.customerFeatures.DrivingLicenseEntity;
 
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
@@ -20,7 +20,7 @@ import javax.persistence.Table;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "employers")
+@Table(name = "customers")
 @SuperBuilder
 public class CustomerEntity extends UserEntity {
 

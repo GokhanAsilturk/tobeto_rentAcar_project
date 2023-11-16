@@ -1,13 +1,13 @@
 package tobeto_rentAcar.data.entities.BaseEntities;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import lombok.experimental.SuperBuilder;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
 import tobeto_rentAcar.data.entities.BaseEntities.types.UserType;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Getter
 @Setter
@@ -17,7 +17,7 @@ import javax.persistence.*;
 @Table(name = "users")
 @SuperBuilder
 @Inheritance(strategy = InheritanceType.JOINED) // kendini extend eden her klasa kendi değişkenlerini eklemesini sağlar.
-public class UserEntity extends BaseEntity {
+public class UserEntity {
 
 
     @Id
@@ -27,6 +27,7 @@ public class UserEntity extends BaseEntity {
 
     @Column(name = "name")
     private String name;
+
     @Column(name = "surname")
     private String surname;
 
@@ -36,7 +37,18 @@ public class UserEntity extends BaseEntity {
     @Column(name = "password")
     private String password;
 
-    @Column(name = "user_type")
+    @Column(name = "user_type_id")
     private UserType userType;
 
+    @Builder.Default
+    @Column(name = "is_deleted")
+    private boolean isDeleted =false;
+
+    @LastModifiedDate
+    @Column(name = "last_modified")
+    private Date lastModified;
+
+    @CreatedDate
+    @Column(name = "created_date")
+    private Date createdDate;
 }
