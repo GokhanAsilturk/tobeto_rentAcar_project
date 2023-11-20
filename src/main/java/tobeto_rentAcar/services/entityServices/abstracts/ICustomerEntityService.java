@@ -1,6 +1,7 @@
 package tobeto_rentAcar.services.entityServices.abstracts;
 
-import tobeto_rentAcar.data.entities.CustomerEntity;
+import tobeto_rentAcar.data.models.CustomerEntity;
+import tobeto_rentAcar.data.models.customerFeatures.DrivingLicenseEntity;
 
 import java.util.List;
 

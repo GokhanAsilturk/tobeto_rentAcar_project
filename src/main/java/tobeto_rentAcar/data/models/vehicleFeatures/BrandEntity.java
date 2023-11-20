@@ -1,11 +1,11 @@
-package tobeto_rentAcar.data.entities;
+package tobeto_rentAcar.data.models.vehicleFeatures;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
-import tobeto_rentAcar.data.entities.BaseEntities.UserEntity;
+import tobeto_rentAcar.data.models.BaseEntities.ItemEntity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -16,13 +16,11 @@ import javax.persistence.Table;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "admins")
+@Table(name = "brands")
 @SuperBuilder
-public class AdminEntity extends UserEntity {
+public class BrandEntity extends ItemEntity {
 
-
-    @Column(name = "salary")
-    private double salary;
-
+    @Column(name = "name", unique = true)
+    private String name;
 
 }

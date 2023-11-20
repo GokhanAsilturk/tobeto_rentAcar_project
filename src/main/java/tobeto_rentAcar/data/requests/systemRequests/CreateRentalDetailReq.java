@@ -1,9 +1,9 @@
 package tobeto_rentAcar.data.requests.systemRequests;
 
-import tobeto_rentAcar.data.entities.BaseEntities.types.ItemType;
-import tobeto_rentAcar.data.entities.CustomerEntity;
-import tobeto_rentAcar.data.entities.RentalDetailEntity;
-import tobeto_rentAcar.data.entities.vehicleFeatures.CarEntity;
+import tobeto_rentAcar.data.models.BaseEntities.types.ItemType;
+import tobeto_rentAcar.data.models.CustomerEntity;
+import tobeto_rentAcar.data.models.RentalDetailEntity;
+import tobeto_rentAcar.data.models.vehicleFeatures.CarEntity;
 
 import java.time.LocalDate;
 

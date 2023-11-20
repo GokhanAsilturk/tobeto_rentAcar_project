@@ -1,4 +1,4 @@
-package tobeto_rentAcar.data.entities;
+package tobeto_rentAcar.data.models;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -6,8 +6,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
 import org.springframework.format.annotation.DateTimeFormat;
-import tobeto_rentAcar.data.entities.BaseEntities.ItemEntity;
-import tobeto_rentAcar.data.entities.vehicleFeatures.CarEntity;
+import tobeto_rentAcar.data.models.BaseEntities.ItemEntity;
+import tobeto_rentAcar.data.models.vehicleFeatures.CarEntity;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -50,7 +50,7 @@ public class RentalDetailEntity extends ItemEntity {
     @Column(name = "total_price")
     private double totalPrice;
 
-    public void calculateTotalDaysAndTotalDailyPrice() {
+    public void qcalculateTotalDaysAndTotalDailyPrice() {
         this.totalDays = startDate.until(endDate, ChronoUnit.DAYS);
         this.totalDailyPrice = totalDays * carEntity.getRentalPrice();
     }

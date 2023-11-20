@@ -1,11 +1,11 @@
-package tobeto_rentAcar.data.entities.vehicleFeatures;
+package tobeto_rentAcar.data.models.vehicleFeatures;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
-import tobeto_rentAcar.data.entities.BaseEntities.ItemEntity;
+import tobeto_rentAcar.data.models.BaseEntities.ItemEntity;
 
 import javax.persistence.*;
 
@@ -19,22 +19,26 @@ import javax.persistence.*;
 public class CarEntity extends ItemEntity {
 
     @ManyToOne
-    @JoinColumn(name = "brand_entity_id")
+    @JoinColumn(name = "brand_id")
     private BrandEntity brandEntity;
 
     @ManyToOne
-    @JoinColumn(name = "model_entity_id")
+    @JoinColumn(name = "model_id")
     private ModelEntity modelEntity;
 
     @ManyToOne
-    @JoinColumn(name = "body_type_entity_id")
+    @JoinColumn(name = "body_type_id")
     private BodyTypeEntity bodyTypeEntity;
+
+    @ManyToOne
+    @JoinColumn(name = "color_id")
+    private ColorEntity colorEntity;
 
     @Column(name = "year")
     private int year;
 
-    @Column(name = "licence_plate")
-    private String licencePlate;
+    @Column(name = "license_plate", unique = true)
+    private String licensePlate;
 
     @Column(name = "details")
     private String details;

@@ -1,4 +1,4 @@
-package tobeto_rentAcar.data.entities;
+package tobeto_rentAcar.data.models;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -7,13 +7,10 @@ import lombok.Setter;
 import lombok.experimental.SuperBuilder;
 import org.apache.commons.lang3.StringUtils;
 import tobeto_rentAcar.data.DTO.CustomerDTO;
-import tobeto_rentAcar.data.entities.BaseEntities.UserEntity;
-import tobeto_rentAcar.data.entities.customerFeatures.DrivingLicenseEntity;
+import tobeto_rentAcar.data.models.BaseEntities.UserEntity;
+import tobeto_rentAcar.data.models.customerFeatures.DrivingLicenseEntity;
 
-import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Getter
 @Setter
@@ -25,8 +22,8 @@ import javax.persistence.Table;
 public class CustomerEntity extends UserEntity {
 
 
-    @ManyToOne
-    @JoinColumn(name = "driving_license_entity_id")
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "driving_license_id", referencedColumnName = "id")
     private DrivingLicenseEntity drivingLicenseEntity;
 
     public CustomerDTO convertToDto() {

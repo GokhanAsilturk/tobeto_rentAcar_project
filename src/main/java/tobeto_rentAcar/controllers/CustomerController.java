@@ -5,6 +5,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import tobeto_rentAcar.data.requests.commonRequests.userCommonRequests.DeleteUserReq;
 import tobeto_rentAcar.data.requests.customerRequests.AddCustomerReq;
+import tobeto_rentAcar.data.requests.customerRequests.DrivingLicenseRequests.AddDrivingLicenseReq;
+import tobeto_rentAcar.data.requests.customerRequests.DrivingLicenseRequests.GetDrivingLicenseReq;
+import tobeto_rentAcar.data.requests.customerRequests.DrivingLicenseRequests.UpdateDrivingLicenseReq;
 import tobeto_rentAcar.data.requests.customerRequests.GetCustomerByEmailReq;
 import tobeto_rentAcar.data.requests.customerRequests.GetCustomerByIdReq;
 import tobeto_rentAcar.data.requests.customerRequests.UpdateCustomerReq;
@@ -83,5 +86,34 @@ public class CustomerController {
         );
     }
 
+    @PostMapping("/add/drivingLicense")
+    public ResponseEntity<TCResponse<?>> addDrivingLicense(@RequestBody AddDrivingLicenseReq addDrivingLicenseReq) throws Exception {
+        return ResponseEntity.ok(TCResponse.builder()
+                .isSuccess(true)
+                .response(this.customerService.addDrivingLicense(addDrivingLicenseReq))
+                .message("Ehliyet eklendi")
+                .build()
+        );
+    }
+
+    @PutMapping("/update/drivingLicense")
+    ResponseEntity<TCResponse<?>> updateDrivingLicense(@RequestBody UpdateDrivingLicenseReq updateDrivingLicenseReq) throws Exception {
+        return ResponseEntity.ok(TCResponse.builder()
+                .isSuccess(true)
+                .response(this.customerService.updateDrivingLicense(updateDrivingLicenseReq))
+                .message("Ehliyet güncellendi")
+                .build()
+        );
+    }
+
+    @GetMapping("/get/drivingLicense")
+    ResponseEntity<TCResponse<?>> getdrivingLicense(@RequestBody GetDrivingLicenseReq getDrivingLicenseReq) {
+        return ResponseEntity.ok(TCResponse.builder()
+                .isSuccess(true)
+                .response(this.customerService.getDrivingLicense(getDrivingLicenseReq))
+                .message("Ehliyet getirildi")
+                .build()
+        );
+    }
 
 }

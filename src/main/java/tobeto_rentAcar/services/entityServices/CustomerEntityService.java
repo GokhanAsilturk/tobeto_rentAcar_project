@@ -2,7 +2,7 @@ package tobeto_rentAcar.services.entityServices;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import tobeto_rentAcar.data.entities.CustomerEntity;
+import tobeto_rentAcar.data.models.CustomerEntity;
 import tobeto_rentAcar.dataAccess.CustomerRepository;
 import tobeto_rentAcar.exception.DataNotFoundException;
 import tobeto_rentAcar.exception.ExceptionType;
@@ -44,14 +44,10 @@ public class CustomerEntityService implements ICustomerEntityService {
                 new DataNotFoundException(ExceptionType.USER_LIST_NOT_FOUND, "User List is Empty! :)"));
     }
 
+
     @Override
     public CustomerEntity update(CustomerEntity customerEntity) throws Exception {
-        try {
-            return this.customerRepository.save(customerEntity);
-        } catch (Exception e) {
-            throw new Exception();
-        }
-
+        return this.save(customerEntity);
     }
 
     @Override

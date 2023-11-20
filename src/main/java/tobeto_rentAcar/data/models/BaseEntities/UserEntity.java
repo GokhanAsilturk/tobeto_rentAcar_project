@@ -1,10 +1,10 @@
-package tobeto_rentAcar.data.entities.BaseEntities;
+package tobeto_rentAcar.data.models.BaseEntities;
 
 import lombok.*;
 import lombok.experimental.SuperBuilder;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
-import tobeto_rentAcar.data.entities.BaseEntities.types.UserType;
+import tobeto_rentAcar.data.models.BaseEntities.types.UserType;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -31,7 +31,7 @@ public class UserEntity {
     @Column(name = "surname")
     private String surname;
 
-    @Column(name = "email_address")
+    @Column(name = "email_address", unique = true)
     private String emailAddress;
 
     @Column(name = "password")
@@ -42,7 +42,7 @@ public class UserEntity {
 
     @Builder.Default
     @Column(name = "is_deleted")
-    private boolean isDeleted =false;
+    private boolean isDeleted = false;
 
     @LastModifiedDate
     @Column(name = "last_modified")

@@ -1,11 +1,11 @@
-package tobeto_rentAcar.data.entities.vehicleFeatures;
+package tobeto_rentAcar.data.models.vehicleFeatures;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
-import tobeto_rentAcar.data.entities.BaseEntities.ItemEntity;
+import tobeto_rentAcar.data.models.BaseEntities.ItemEntity;
 
 import javax.persistence.*;
 
@@ -22,6 +22,6 @@ public class ModelEntity extends ItemEntity {
     private String name;
 
     @OneToOne
-    @JoinColumn(name = "brand")
+    @JoinColumn(name = "brand_id")
     private BrandEntity brandEntity;
 }
