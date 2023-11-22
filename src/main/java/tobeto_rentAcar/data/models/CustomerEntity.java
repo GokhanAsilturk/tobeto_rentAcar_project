@@ -9,6 +9,7 @@ import org.apache.commons.lang3.StringUtils;
 import tobeto_rentAcar.data.DTO.CustomerDTO;
 import tobeto_rentAcar.data.models.BaseEntities.UserEntity;
 import tobeto_rentAcar.data.models.customerFeatures.DrivingLicenseEntity;
+import tobeto_rentAcar.services.systemServices.EntityUpdaterUtil;
 
 import javax.persistence.*;
 
@@ -22,18 +23,20 @@ import javax.persistence.*;
 public class CustomerEntity extends UserEntity {
 
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade = {CascadeType.PERSIST,CascadeType.REMOVE,CascadeType.REFRESH})// customer da yapılan tüm değişiklikler ehliyet sınıfında da değişir.
     @JoinColumn(name = "driving_license_id", referencedColumnName = "id")
     private DrivingLicenseEntity drivingLicenseEntity;
-
     public CustomerDTO convertToDto() {
-        return CustomerDTO.builder()
+        CustomerDTO customerDTO = CustomerDTO.builder()
                 .id(getId())
                 .name(StringUtils.capitalize(getName()))
                 .surname(getSurname().toUpperCase())
                 .emailAddress(getEmailAddress())
-                .drivingLicenseDTO(drivingLicenseEntity.convertToDTO())
                 .build();
+        if(this.drivingLicenseEntity != null) {
+            EntityUpdaterUtil.updateEntityFields(customerDTO.drivingLicenseDTO(), this.drivingLicenseEntity.convertToDTO());
+        }
+        return customerDTO;
     }
 
 }

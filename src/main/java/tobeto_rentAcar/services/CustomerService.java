@@ -11,8 +11,6 @@ import tobeto_rentAcar.data.requests.customerRequests.AddCustomerReq;
 import tobeto_rentAcar.data.requests.customerRequests.DrivingLicenseRequests.AddDrivingLicenseReq;
 import tobeto_rentAcar.data.requests.customerRequests.DrivingLicenseRequests.GetDrivingLicenseReq;
 import tobeto_rentAcar.data.requests.customerRequests.DrivingLicenseRequests.UpdateDrivingLicenseReq;
-import tobeto_rentAcar.data.requests.customerRequests.GetCustomerByEmailReq;
-import tobeto_rentAcar.data.requests.customerRequests.GetCustomerByIdReq;
 import tobeto_rentAcar.data.requests.customerRequests.UpdateCustomerReq;
 import tobeto_rentAcar.services.abstracts.ICustomerService;
 import tobeto_rentAcar.services.entityServices.CustomerEntityService;
@@ -41,13 +39,13 @@ public class CustomerService implements ICustomerService {
     }
 
     @Override
-    public CustomerDTO getById(GetCustomerByIdReq getCustomerByIdReq) {
-        return this.customerEntityService.getById(getCustomerByIdReq.id()).convertToDto();
+    public CustomerDTO getById(int id) {
+        return this.customerEntityService.getById(id).convertToDto();
     }
 
     @Override
-    public CustomerDTO getByEmailAddress(GetCustomerByEmailReq getCustomerByEmailReq) {
-        return this.customerEntityService.getByEmailAddress(getCustomerByEmailReq.email()).convertToDto();
+    public CustomerDTO getByEmailAddress(String emailAddress) {
+        return this.customerEntityService.getByEmailAddress(emailAddress).convertToDto();
     }
 
     @Override
@@ -58,11 +56,11 @@ public class CustomerService implements ICustomerService {
 
     @Override
     public CustomerDTO update(UpdateCustomerReq updateCustomerReq) throws Exception {
-        CustomerEntity customerEntity = this.customerEntityService.getById(updateCustomerReq.customerDTO().id());
+        CustomerEntity customerEntity = this.customerEntityService.getById(updateCustomerReq.getId());
 
-        EntityUpdaterUtil.updateEntityFields(customerEntity, updateCustomerReq);
+        CustomerEntity updatedCustomerEntity = EntityUpdaterUtil.updateEntityFields(customerEntity, updateCustomerReq);
 
-        return this.customerEntityService.update(customerEntity).convertToDto();
+        return this.customerEntityService.update(updatedCustomerEntity).convertToDto();
     }
 
     @Override
@@ -78,11 +76,9 @@ public class CustomerService implements ICustomerService {
     //TODO driving license servis işlemleri tamamlandı. controller a bağlantılar eklendi.
     @Override
     public CustomerDTO addDrivingLicense(AddDrivingLicenseReq addDrivingLicenseReq) throws Exception {
-        DrivingLicenseEntity drivingLicenseEntity = addDrivingLicenseReq.convertToEntity();
         CustomerEntity customerEntity = this.customerEntityService.getById(addDrivingLicenseReq.customerId());
+        DrivingLicenseEntity drivingLicenseEntity = addDrivingLicenseReq.convertToEntity(customerEntity);
 
-        //Customer, ehliyetin convertToEntity methodunda eklenemediği için burada ekliyoruz.
-        drivingLicenseEntity.setCustomerEntity(customerEntity);
         this.drivingLicenseEntityService.save(drivingLicenseEntity);
 
         //Customer a ehliyeti set ediyoruz.

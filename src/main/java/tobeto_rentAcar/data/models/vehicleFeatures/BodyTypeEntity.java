@@ -20,7 +20,7 @@ import javax.persistence.Table;
 @SuperBuilder
 public class BodyTypeEntity extends ItemEntity {
 
-    @Column(name = "body_type",unique = true)
+    @Column(name = "body_type", unique = true)
     private String name;
 
 }

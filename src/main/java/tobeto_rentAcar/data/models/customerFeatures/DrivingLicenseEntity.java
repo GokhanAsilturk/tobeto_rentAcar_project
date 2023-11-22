@@ -21,11 +21,11 @@ import javax.persistence.*;
 @SuperBuilder
 public class DrivingLicenseEntity extends ItemEntity {
 
-    @OneToOne
+    @OneToOne(cascade = {CascadeType.REFRESH})// bağlı olduğu dataya kendindeki değişiklikleri aktarmaya yarar.
     @JoinColumn(name = "customer_entity_id", referencedColumnName = "id")
     private CustomerEntity customerEntity;
 
-    @Column(name = "license number", unique = true)
+    @Column(name = "license_number", unique = true)
     private String licenseNumber;
 
     @Column(name = "license_type")

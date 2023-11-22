@@ -4,24 +4,27 @@ import java.lang.reflect.Field;
 
 public class EntityUpdaterUtil {
 
-    public static void updateEntityFields(Object entity, Object request) {
-        Field[] entityFields = entity.getClass().getDeclaredFields();
+    //TODO burada hata var. postmande entity is null diyor.
+    public static <T> T updateEntityFields(T entityy, Object request) {
+        Field[] entityyFields = entityy.getClass().getDeclaredFields();
 
-        for (Field entityField : entityFields) {
-            entityField.setAccessible(true);
+        for (Field entityyField : entityyFields) {
+            entityyField.setAccessible(true);
 
             try {
-                Field requestField = request.getClass().getDeclaredField(entityField.getName());
+                Field requestField = request.getClass().getDeclaredField(entityyField.getName());
                 requestField.setAccessible(true);
 
                 Object requestValue = requestField.get(request);
 
                 if (requestValue != null) {
-                    entityField.set(entity, requestValue);
+                    entityyField.set(entityy, requestValue);
                 }
             } catch (NoSuchFieldException | IllegalAccessException e) {
                 // Hata durumunu ele al, örneğin: throw new RuntimeException("Alan güncelleme hatası: " + e.getMessage());
             }
         }
+        return entityy;
     }
+
 }

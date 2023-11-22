@@ -15,5 +15,4 @@ public interface DrivingLicenseRepository extends JpaRepository<DrivingLicenseEn
     Optional<List<DrivingLicenseEntity>> findAllByIsDeletedFalse();
 
 
-
 }

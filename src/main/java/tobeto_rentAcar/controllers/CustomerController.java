@@ -8,8 +8,6 @@ import tobeto_rentAcar.data.requests.customerRequests.AddCustomerReq;
 import tobeto_rentAcar.data.requests.customerRequests.DrivingLicenseRequests.AddDrivingLicenseReq;
 import tobeto_rentAcar.data.requests.customerRequests.DrivingLicenseRequests.GetDrivingLicenseReq;
 import tobeto_rentAcar.data.requests.customerRequests.DrivingLicenseRequests.UpdateDrivingLicenseReq;
-import tobeto_rentAcar.data.requests.customerRequests.GetCustomerByEmailReq;
-import tobeto_rentAcar.data.requests.customerRequests.GetCustomerByIdReq;
 import tobeto_rentAcar.data.requests.customerRequests.UpdateCustomerReq;
 import tobeto_rentAcar.data.responses.TCResponse;
 import tobeto_rentAcar.services.CustomerService;
@@ -35,21 +33,21 @@ public class CustomerController {
         );
     }
 
-    @GetMapping("/get/customer/byId")
-    ResponseEntity<TCResponse<?>> getCustomerById(@RequestBody GetCustomerByIdReq getCustomerByIdReq) {
+    @GetMapping("/get/customer/byId{id}")
+    ResponseEntity<TCResponse<?>> getCustomerById(@RequestParam int id) {
         return ResponseEntity.ok(TCResponse.builder()
                 .isSuccess(true)
-                .response(this.customerService.getById(getCustomerByIdReq))
+                .response(this.customerService.getById(id))
                 .message("Müşteri getirildi")
                 .build()
         );
     }
 
-    @GetMapping("/get/customer/byEmailAddress")
-    ResponseEntity<TCResponse<?>> getCustomerByEmailAddress(@RequestBody GetCustomerByEmailReq getCustomerByEmailReq) {
+    @GetMapping("/get/customer/byEmailAddress{emailAddress}")
+    ResponseEntity<TCResponse<?>> getCustomerByEmailAddress(@RequestParam String emailAddress) {
         return ResponseEntity.ok(TCResponse.builder()
                 .isSuccess(true)
-                .response(this.customerService.getByEmailAddress(getCustomerByEmailReq))
+                .response(this.customerService.getByEmailAddress(emailAddress))
                 .message("Müşteri getirildi")
                 .build()
         );
@@ -57,6 +55,7 @@ public class CustomerController {
 
     @GetMapping("/getAll/customer")
     ResponseEntity<TCResponse<?>> getAllCustomers() {
+
         return ResponseEntity.ok(TCResponse.builder()
                 .isSuccess(true)
                 .response(this.customerService.getAll())
@@ -67,6 +66,7 @@ public class CustomerController {
 
     @PutMapping("/update/customer")
     ResponseEntity<TCResponse<?>> updateCustomer(@RequestBody UpdateCustomerReq updateCustomerReq) throws Exception {
+
         return ResponseEntity.ok(TCResponse.builder()
                 .isSuccess(true)
                 .response(this.customerService.update(updateCustomerReq))

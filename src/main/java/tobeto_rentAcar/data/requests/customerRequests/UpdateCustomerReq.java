@@ -1,7 +1,15 @@
 package tobeto_rentAcar.data.requests.customerRequests;
 
+import lombok.Getter;
+import lombok.Setter;
 import tobeto_rentAcar.data.DTO.CustomerDTO;
 
-//customer dto olarak request alıp, doldurulan alanları entity sınıfına setleyerek update edeceğiz.
-public record UpdateCustomerReq(CustomerDTO customerDTO) {
+@Getter
+@Setter
+public class UpdateCustomerReq {
+    int id;
+    String newName;
+    String newSurname;
+    String newEmailAddress;
+    String newPassword;
 }

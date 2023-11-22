@@ -22,8 +22,8 @@ public enum ExceptionType {
     VEHICLE_DATA_NOT_FOUND(1007, "Book Not Found!"),
     VEHICLE_LIST_NOT_FOUND(1008, "Book List is Empty!"),
 
-    DRIVING_LICENSE_NOT_FOUND(1009,"Driving License Not Found!"),
-    DRIVING_LICENSE_LIST_NOT_FOUND(1010,"Driving License List Not Found!");
+    DRIVING_LICENSE_NOT_FOUND(1009, "Driving License Not Found!"),
+    DRIVING_LICENSE_LIST_NOT_FOUND(1010, "Driving License List Not Found!");
 
     //------------------------------------------------------------------
 
