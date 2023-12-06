@@ -13,6 +13,6 @@ import java.util.Optional;
 public interface DrivingLicenseRepository extends JpaRepository<DrivingLicenseEntity, Integer> {
 
     Optional<List<DrivingLicenseEntity>> findAllByIsDeletedFalse();
-
+    Optional<List<DrivingLicenseEntity>> findAllByIsDeletedTrue();
 
 }

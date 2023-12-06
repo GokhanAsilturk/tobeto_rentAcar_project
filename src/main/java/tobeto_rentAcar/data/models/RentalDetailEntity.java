@@ -7,7 +7,7 @@ import lombok.Setter;
 import lombok.experimental.SuperBuilder;
 import org.springframework.format.annotation.DateTimeFormat;
 import tobeto_rentAcar.data.models.BaseEntities.ItemEntity;
-import tobeto_rentAcar.data.models.vehicleFeatures.CarEntity;
+import tobeto_rentAcar.data.models.vehicleEntites.CarEntity;
 
 import javax.persistence.*;
 import java.time.LocalDate;

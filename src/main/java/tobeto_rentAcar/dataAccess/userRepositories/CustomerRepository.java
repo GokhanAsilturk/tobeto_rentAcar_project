@@ -1,4 +1,4 @@
-package tobeto_rentAcar.dataAccess;
+package tobeto_rentAcar.dataAccess.userRepositories;
 
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 import tobeto_rentAcar.data.models.CustomerEntity;
 import tobeto_rentAcar.data.models.customerFeatures.DrivingLicenseEntity;
+import tobeto_rentAcar.data.models.vehicleEntites.CarEntity;
 
 import java.util.List;
 import java.util.Optional;
@@ -23,10 +24,12 @@ public interface CustomerRepository extends JpaRepository<CustomerEntity, Intege
     int updateCustomerRepo(String name, String surname, String emailAddress, String password, DrivingLicenseEntity drivingLicenseEntity, String name1, String surname1, String emailAddress1, String password1, DrivingLicenseEntity drivingLicenseEntity1);
 
 
-
     Optional<CustomerEntity> findByEmailAddress(String emailAddress);
 
     Optional<List<CustomerEntity>> findAllByIsDeletedFalse();
+    Optional<List<CustomerEntity>> findAllByIsDeletedTrue();
 
     Optional<CustomerEntity> findByIdAndIsDeletedFalse(int id);
+
+
 }

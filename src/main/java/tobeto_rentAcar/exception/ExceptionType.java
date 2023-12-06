@@ -9,6 +9,7 @@ public enum ExceptionType {
 
     GENERIC_EXCEPTION(1, "Unkown Error!"),
 
+    ITEM_NOT_FOUND(1000,"Item Not Found!"),
     //DATA NOT FOUND Types:
     USER_DATA_NOT_FOUND(1001, "User Not Found!"),
     USER_LIST_NOT_FOUND(1002, "User List is Empty!"),

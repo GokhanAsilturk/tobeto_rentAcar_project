@@ -23,9 +23,11 @@ import javax.persistence.*;
 public class CustomerEntity extends UserEntity {
 
 
-    @OneToOne(cascade = {CascadeType.PERSIST,CascadeType.REMOVE,CascadeType.REFRESH})// customer da yapılan tüm değişiklikler ehliyet sınıfında da değişir.
+    @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.REMOVE, CascadeType.REFRESH})
+// customer da yapılan tüm değişiklikler ehliyet sınıfında da değişir.
     @JoinColumn(name = "driving_license_id", referencedColumnName = "id")
     private DrivingLicenseEntity drivingLicenseEntity;
+
     public CustomerDTO convertToDto() {
         CustomerDTO customerDTO = CustomerDTO.builder()
                 .id(getId())
@@ -33,7 +35,7 @@ public class CustomerEntity extends UserEntity {
                 .surname(getSurname().toUpperCase())
                 .emailAddress(getEmailAddress())
                 .build();
-        if(this.drivingLicenseEntity != null) {
+        if (this.drivingLicenseEntity != null) {
             EntityUpdaterUtil.updateEntityFields(customerDTO.drivingLicenseDTO(), this.drivingLicenseEntity.convertToDTO());
         }
         return customerDTO;

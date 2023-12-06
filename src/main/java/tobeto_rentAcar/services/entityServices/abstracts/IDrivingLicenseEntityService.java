@@ -15,9 +15,12 @@ public interface IDrivingLicenseEntityService {
 
     List<DrivingLicenseEntity> getAllByIsDeletedFalse();
 
+    List<DrivingLicenseEntity> getAllByIsDeletedTrue();
+
     DrivingLicenseEntity update(DrivingLicenseEntity drivingLicenseEntity);
 
     void softDelete(DrivingLicenseEntity drivingLicenseEntity);
 
+    void delete(DrivingLicenseEntity drivingLicenseEntity);
 
 }

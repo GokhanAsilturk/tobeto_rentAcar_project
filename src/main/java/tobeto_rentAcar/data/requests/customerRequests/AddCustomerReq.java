@@ -5,11 +5,23 @@ import tobeto_rentAcar.data.models.BaseEntities.types.UserType;
 import tobeto_rentAcar.data.models.CustomerEntity;
 import tobeto_rentAcar.data.requests.customerRequests.DrivingLicenseRequests.AddDrivingLicenseReq;
 
-public record AddCustomerReq(String name,
-                             String surname,
-                             String emailAddress,
-                             String password,
-                             AddDrivingLicenseReq addDrivingLicenseReq
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
+
+public record AddCustomerReq(
+        @NotBlank()
+        @Size(min = 2, max = 30)
+        String name,
+        @NotBlank()
+        @Size(min = 2, max = 30)
+        String surname,
+        @NotBlank()
+        @Email
+        String emailAddress,
+        @NotBlank()
+        String password,
+        AddDrivingLicenseReq addDrivingLicenseReq
 ) {
 
     public CustomerEntity convertToEntity() {

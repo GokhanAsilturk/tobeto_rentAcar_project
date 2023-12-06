@@ -44,6 +44,12 @@ public class DrivingLicenseEntityService implements IDrivingLicenseEntityService
                 new DataNotFoundException(ExceptionType.DRIVING_LICENSE_LIST_NOT_FOUND, "Driving License is Empty! :)"));
     }
 
+    @Override
+    public List<DrivingLicenseEntity> getAllByIsDeletedTrue() {
+        return this.drivingLicenseRepository.findAllByIsDeletedTrue().orElseThrow(() ->
+                new DataNotFoundException(ExceptionType.DRIVING_LICENSE_LIST_NOT_FOUND, "Deleted Driving License List is Empty! :)"));
+    }
+
 
     @Override
     public DrivingLicenseEntity update(DrivingLicenseEntity drivingLicenseEntity) {
@@ -55,5 +61,10 @@ public class DrivingLicenseEntityService implements IDrivingLicenseEntityService
     public void softDelete(DrivingLicenseEntity drivingLicenseEntity) {
         drivingLicenseEntity.setDeleted(true);
         this.save(drivingLicenseEntity);
+    }
+
+    @Override
+    public void delete(DrivingLicenseEntity drivingLicenseEntity) {
+        this.drivingLicenseRepository.delete(drivingLicenseEntity);
     }
 }

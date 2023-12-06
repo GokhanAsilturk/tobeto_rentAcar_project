@@ -1,6 +1,7 @@
 package tobeto_rentAcar.services.entityServices.abstracts;
 
 import tobeto_rentAcar.data.models.CustomerEntity;
+import tobeto_rentAcar.data.models.vehicleEntites.CarEntity;
 
 import java.util.List;
 
@@ -14,8 +15,12 @@ public interface ICustomerEntityService {
 
     List<CustomerEntity> getAll();
 
+    List<CustomerEntity> getAllByIsDeletedFalse();
+    List<CustomerEntity> getAllByIsDeletedTrue();
     CustomerEntity update(CustomerEntity customerEntity) throws Exception;
 
     void softDelete(CustomerEntity customerEntity) throws Exception;
+
+    void delete(CustomerEntity customerEntity);
 
 }

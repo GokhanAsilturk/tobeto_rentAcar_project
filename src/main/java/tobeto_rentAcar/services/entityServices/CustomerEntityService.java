@@ -3,7 +3,7 @@ package tobeto_rentAcar.services.entityServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import tobeto_rentAcar.data.models.CustomerEntity;
-import tobeto_rentAcar.dataAccess.CustomerRepository;
+import tobeto_rentAcar.dataAccess.userRepositories.CustomerRepository;
 import tobeto_rentAcar.exception.DataNotFoundException;
 import tobeto_rentAcar.exception.ExceptionType;
 import tobeto_rentAcar.services.entityServices.abstracts.ICustomerEntityService;
@@ -28,20 +28,31 @@ public class CustomerEntityService implements ICustomerEntityService {
     @Override
     public CustomerEntity getById(int id) {
         return this.customerRepository.findByIdAndIsDeletedFalse(id).orElseThrow(() ->
-                new DataNotFoundException(ExceptionType.USER_DATA_NOT_FOUND, "User Not Found! :)"));
+                new DataNotFoundException(ExceptionType.USER_DATA_NOT_FOUND, "Customer Not Found! :)"));
     }
 
     @Override
     public CustomerEntity getByEmailAddress(String emailAddress) {
         return this.customerRepository.findByEmailAddress(emailAddress.toLowerCase())
                 .orElseThrow(() ->
-                        new DataNotFoundException(ExceptionType.USER_DATA_NOT_FOUND, "User Not Found! :)"));
+                        new DataNotFoundException(ExceptionType.USER_DATA_NOT_FOUND, "Customer Not Found! :)"));
     }
 
     @Override
     public List<CustomerEntity> getAll() {
+        return this.customerRepository.findAll();
+    }
+
+    @Override
+    public List<CustomerEntity> getAllByIsDeletedFalse() {
         return this.customerRepository.findAllByIsDeletedFalse().orElseThrow(() ->
-                new DataNotFoundException(ExceptionType.USER_LIST_NOT_FOUND, "User List is Empty! :)"));
+                new DataNotFoundException(ExceptionType.USER_LIST_NOT_FOUND, "Customer List is Empty! :)"));
+    }
+
+    @Override
+    public List<CustomerEntity> getAllByIsDeletedTrue() {
+        return this.customerRepository.findAllByIsDeletedTrue().orElseThrow(() ->
+                new DataNotFoundException(ExceptionType.USER_LIST_NOT_FOUND, "Deleted Customer List is Empty! :)"));
     }
 
 
@@ -60,6 +71,12 @@ public class CustomerEntityService implements ICustomerEntityService {
             throw new Exception();
         }
 
+    }
+
+    //ADMIN ALANI
+    @Override
+    public void delete(CustomerEntity customerEntity) {
+        this.customerRepository.delete(customerEntity);
     }
 
 

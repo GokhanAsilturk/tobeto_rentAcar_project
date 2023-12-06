@@ -7,8 +7,6 @@ import tobeto_rentAcar.data.requests.customerRequests.AddCustomerReq;
 import tobeto_rentAcar.data.requests.customerRequests.DrivingLicenseRequests.AddDrivingLicenseReq;
 import tobeto_rentAcar.data.requests.customerRequests.DrivingLicenseRequests.GetDrivingLicenseReq;
 import tobeto_rentAcar.data.requests.customerRequests.DrivingLicenseRequests.UpdateDrivingLicenseReq;
-import tobeto_rentAcar.data.requests.customerRequests.GetCustomerByEmailReq;
-import tobeto_rentAcar.data.requests.customerRequests.GetCustomerByIdReq;
 import tobeto_rentAcar.data.requests.customerRequests.UpdateCustomerReq;
 
 import java.util.List;

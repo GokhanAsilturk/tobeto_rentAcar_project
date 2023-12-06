@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
+import tobeto_rentAcar.data.DTO.VehicleFeaturesDTO.ColorDto;
 import tobeto_rentAcar.data.models.BaseEntities.ItemEntity;
 
 import javax.persistence.Column;
@@ -22,5 +23,12 @@ public class ColorEntity extends ItemEntity {
 
     @Column(name = "name")
     private String name;
+
+    public ColorDto convertToDto(){
+        return ColorDto.builder()
+                .id(getId())
+                .name(getName())
+                .build();
+    }
 
 }

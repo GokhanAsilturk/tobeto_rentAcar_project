@@ -9,7 +9,7 @@ public record AddDrivingLicenseReq(int customerId, String licenseNumber, Driving
 
 
     public DrivingLicenseEntity convertToEntity(CustomerEntity customerEntity) {
-    //TODO ehliyete customer eklerken sıkıntı yaşıyorum.
+        //TODO ehliyete customer eklerken sıkıntı yaşıyorum.
         return DrivingLicenseEntity.builder()
                 .customerEntity(customerEntity)
                 .licenseNumber(this.licenseNumber)

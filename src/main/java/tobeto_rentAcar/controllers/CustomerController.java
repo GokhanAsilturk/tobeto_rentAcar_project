@@ -11,12 +11,13 @@ import tobeto_rentAcar.data.requests.customerRequests.DrivingLicenseRequests.Upd
 import tobeto_rentAcar.data.requests.customerRequests.UpdateCustomerReq;
 import tobeto_rentAcar.data.responses.TCResponse;
 import tobeto_rentAcar.services.CustomerService;
+import tobeto_rentAcar.services.abstracts.ICustomerService;
 
 @RestController
 @RequestMapping("api/customer")
 public class CustomerController {
 
-    private final CustomerService customerService;
+    private final ICustomerService customerService;
 
     @Autowired
     public CustomerController(CustomerService customerService) {

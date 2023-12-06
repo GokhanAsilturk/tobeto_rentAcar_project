@@ -3,17 +3,23 @@ package tobeto_rentAcar.data.requests.systemRequests;
 import tobeto_rentAcar.data.models.BaseEntities.types.ItemType;
 import tobeto_rentAcar.data.models.CustomerEntity;
 import tobeto_rentAcar.data.models.RentalDetailEntity;
-import tobeto_rentAcar.data.models.vehicleFeatures.CarEntity;
+import tobeto_rentAcar.data.models.vehicleEntites.CarEntity;
 
+import javax.validation.constraints.NotBlank;
 import java.time.LocalDate;
 
 public record CreateRentalDetailReq(
-        CustomerEntity customerEntity
-        , CarEntity carEntity
-        , String startDate
-        , String endDate
-        , double totalDailyPrice
-        , double totalPrice) {
+        @NotBlank()
+        CustomerEntity customerEntity,
+        @NotBlank()
+        CarEntity carEntity,
+        @NotBlank()
+        String startDate,
+        @NotBlank()
+        String endDate,
+
+        double totalDailyPrice,
+        double totalPrice) {
 
     RentalDetailEntity convertToEntity() {
         return RentalDetailEntity.builder()
